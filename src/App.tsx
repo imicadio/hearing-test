@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col justify-between">
       <Header />
-      <section className="container mx-auto max-w-screen-lg flex flex-1 p-3 ">
+      <section className="container mx-auto max-w-screen-lg flex flex-1 p-3 items-center">
         <Routing />
       </section>
       <Footer />

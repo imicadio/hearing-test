@@ -1,5 +1,6 @@
 import React, { FC, lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+import AnimationLayout from "../components/animation-layout/animation-layout";
 import { ROUTER } from "../shared/router";
 
 const Loader = lazy(() => import("../components/loader/loader"));
@@ -11,8 +12,10 @@ const Routing: FC<{}> = () => {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path={ROUTER.HOME} element={<Home />} />
-        <Route path={ROUTER.EQUIPMENT} element={<Equipment />} />
+        <Route element={<AnimationLayout />}>
+          <Route path={ROUTER.HOME} element={<Home />} />
+          <Route path={ROUTER.EQUIPMENT} element={<Equipment />} />
+        </Route>
       </Routes>
     </Suspense>
   );

@@ -5,7 +5,7 @@ import { IButton } from "./models";
 
 const Button: FC<IButton> = ({ link, customClass }) => {
 
-    const returnClass = classNames('inline-block bg-lime-500 py-3 px-5 mt-2 rounded-full text-white', customClass)
+    const returnClass = classNames("inline-block bg-lime-500 py-3 px-5 rounded-full text-white shadow-lg shadow-lime-500/50 hover:before:content-['']", customClass)
 
   return (
       <Link
