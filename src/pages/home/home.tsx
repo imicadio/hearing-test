@@ -20,7 +20,7 @@ const Home: FC<{}> = () => {
             details in order to obtain the hearing screener results and to
             receive more information about Phonak products and services.
           </p>
-          <Button link={ROUTER.EQUIPMENT} />
+          <Button link={ROUTER.INSTRUCTION} />
         </div>
       </div>
     </>

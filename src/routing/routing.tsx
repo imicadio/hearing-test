@@ -6,6 +6,7 @@ import { ROUTER } from "../shared/router";
 const Loader = lazy(() => import("../components/loader/loader"));
 
 const Home = lazy(() => import("../pages/home/home"));
+const Instruction = lazy(() => import("../pages/instruction/instruction"));
 const Equipment = lazy(() => import("../pages/equipment/equipment"));
 
 const Routing: FC<{}> = () => {
@@ -14,6 +15,7 @@ const Routing: FC<{}> = () => {
       <Routes>
         <Route element={<AnimationLayout />}>
           <Route path={ROUTER.HOME} element={<Home />} />
+          <Route path={ROUTER.INSTRUCTION} element={<Instruction />} />
           <Route path={ROUTER.EQUIPMENT} element={<Equipment />} />
         </Route>
       </Routes>
