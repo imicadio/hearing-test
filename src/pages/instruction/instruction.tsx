@@ -15,7 +15,7 @@ const Instruction: FC<{}> = () => {
       <Button
         link={ROUTER.EQUIPMENT}
         customClass="w-full text-center sm:w-fit"
-      />
+      >Next step</Button>
     </div>
   );
 };

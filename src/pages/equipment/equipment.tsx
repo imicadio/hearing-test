@@ -18,7 +18,7 @@ const Equipment: FC<{}> = () => {
           details in order to obtain the hearing screener results and to receive
           more information about Phonak products and services.
         </p>
-        <Button link={ROUTER.EQUIPMENT} />
+        <Button link={ROUTER.EQUIPMENT}>Start</Button>
       </div>
       <img src={image} alt="hearing test" className="col-start-1 col-end-2" />
     </div>

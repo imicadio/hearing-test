@@ -6,9 +6,9 @@ import { ROUTER } from "../../shared/router";
 const Home: FC<{}> = () => {
   return (
     <>
-      <div className="grid grid-cols-2 place-items-center">
+      <div className="grid md:grid-cols-2 gap-5 place-items-center">
         <img src={image} alt="hearing test" className="" />
-        <div className="">
+        <div className="md:py-4">
           <h1 className="font-bold text-sky-500 text-left pb-3">
             Hearing test app
           </h1>
@@ -20,7 +20,7 @@ const Home: FC<{}> = () => {
             details in order to obtain the hearing screener results and to
             receive more information about Phonak products and services.
           </p>
-          <Button link={ROUTER.INSTRUCTION} />
+          <Button link={ROUTER.INSTRUCTION}>Let's go</ Button>
         </div>
       </div>
     </>

@@ -1,4 +1,13 @@
+export enum BUTTON_TYPE {
+    'submit',
+    'button'
+}
+
 export interface IButton {
-    link: string;
+    type?: 'button' | 'submit';
+    onClick?: () => void
+    isBack?: boolean;
+    link?: string;
     customClass?: string;
+    children?: React.ReactNode
 }
