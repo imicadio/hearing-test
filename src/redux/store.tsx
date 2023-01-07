@@ -1,8 +1,10 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import headphonesSlice from "./slice/headphonesSlice/headphonesSlice";
+import soundSlice from "./slice/soundSlice/soundSlice";
 
 const rootReducer = combineReducers({
-    headphones: headphonesSlice,
+  headphones: headphonesSlice,
+  sound: soundSlice,
 });
 
 const store = configureStore({

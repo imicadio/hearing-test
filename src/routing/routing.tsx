@@ -9,6 +9,7 @@ const Home = lazy(() => import("../pages/home/home"));
 const Instruction = lazy(() => import("../pages/instruction/instruction"));
 const Headphones = lazy(() => import("../pages/headphones/headphones"));
 const Sounds = lazy(() => import("../pages/sounds/sounds"));
+const Question = lazy(() => import("../pages/question/question"));
 
 const Routing: FC<{}> = () => {
   return (
@@ -21,6 +22,8 @@ const Routing: FC<{}> = () => {
           <Route path={ROUTER.CALIBRATED} element={<Sounds />}>
             <Route path=":sound" element={<Sounds />} />
           </Route>
+          <Route path={ROUTER.QUESTION} element={<Question />} />
+          <Route path={ROUTER.QUESTION + "/:question"} element={<Question />} />
         </Route>
       </Routes>
     </Suspense>
