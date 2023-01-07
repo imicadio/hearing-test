@@ -2,5 +2,6 @@ export const ROUTER: Record<string, string> = {
     HOME: '/',
     HEADPHONES: '/headphones',
     INSTRUCTION: '/instruction',
-    QUESTION: '/question'
+    QUESTION: '/question',
+    CALIBRATED: '/sounds',
 }

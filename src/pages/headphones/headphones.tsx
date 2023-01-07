@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import image from "../../assets/headphone.jpg";
 import SelectListing from "../../components/select-listing/select-listing";
 import {
@@ -9,9 +10,10 @@ import {
   SET_HEADPHONES,
 } from "../../redux/slice/headphonesSlice/headphonesSlice";
 import { IHeadphones } from "../../redux/slice/headphonesSlice/model";
-// import { ROUTER } from "../../shared/router";
+import { ROUTER } from "../../shared/router";
 
 const Headphones: FC<{}> = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const allHeadphones: IHeadphones[] = useSelector(selectedAllHeadphones);
   const isSelected = useSelector(selectedHeadphones);
@@ -19,6 +21,7 @@ const Headphones: FC<{}> = () => {
   const handleOptionChange = (changeEvent: any) => {
     const setKey = changeEvent.target.value;
     dispatch(SET_HEADPHONES(setKey));
+    setTimeout(() => navigate(ROUTER.CALIBRATED), 100)
   };
 
   return (
