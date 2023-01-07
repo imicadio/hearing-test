@@ -23,7 +23,7 @@ const AnimationLayout: FC<{}> = () => {
         animate="in"
         variants={pageVariants}
         transition={pageTransition}
-        className="md:shadow-xl"
+        className="md:shadow-xl w-full"
       >
         {renderBackBtn}
         <Outlet />

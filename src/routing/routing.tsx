@@ -7,7 +7,7 @@ const Loader = lazy(() => import("../components/loader/loader"));
 
 const Home = lazy(() => import("../pages/home/home"));
 const Instruction = lazy(() => import("../pages/instruction/instruction"));
-const Equipment = lazy(() => import("../pages/equipment/equipment"));
+const HEADPHONES = lazy(() => import("../pages/headphones/headphones"));
 
 const Routing: FC<{}> = () => {
   return (
@@ -16,7 +16,7 @@ const Routing: FC<{}> = () => {
         <Route element={<AnimationLayout />}>
           <Route path={ROUTER.HOME} element={<Home />} />
           <Route path={ROUTER.INSTRUCTION} element={<Instruction />} />
-          <Route path={ROUTER.EQUIPMENT} element={<Equipment />} />
+          <Route path={ROUTER.HEADPHONES} element={<HEADPHONES />} />
         </Route>
       </Routes>
     </Suspense>

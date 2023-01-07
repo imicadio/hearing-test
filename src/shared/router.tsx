@@ -1,6 +1,6 @@
 export const ROUTER: Record<string, string> = {
     HOME: '/',
-    EQUIPMENT: '/equipment',
+    HEADPHONES: '/headphones',
     INSTRUCTION: '/instruction',
     QUESTION: '/question'
 }
