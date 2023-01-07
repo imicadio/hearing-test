@@ -22,7 +22,7 @@ const SelectListing: FC<ISelectedListing> = ({
     );
   });
 
-  return <form className="flex flex-col">{renderListing}</form>;
+  return <form className="flex flex-col gap-2 text-lg">{renderListing}</form>;
 };
 
 export default SelectListing;

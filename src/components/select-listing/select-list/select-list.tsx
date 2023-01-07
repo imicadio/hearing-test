@@ -1,18 +1,27 @@
 import React, { FC } from "react";
 import { ISelectList } from "./model";
 
-const SelectList: FC<ISelectList> = ({ id, name, selected, handleOptionChange }) => {
-  
+const SelectList: FC<ISelectList> = ({
+  id,
+  name,
+  selected,
+  handleOptionChange,
+}) => {
+  const isChecked = id === selected;
+
   return (
-    <label>
+    <div>
       <input
+        id={id}
         type="radio"
         value={id}
-        checked={id === selected}
-        onChange={handleOptionChange}
+        checked={isChecked}
+        onChange={handleOptionChange}        
       />
-      {name}
-    </label>
+      <label htmlFor={id} className="ml-3">
+        {name}
+      </label>
+    </div>
   );
 };
 
