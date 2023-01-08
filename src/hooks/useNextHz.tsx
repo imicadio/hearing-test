@@ -15,7 +15,7 @@ export const useNextHz = (): number | string | null => {
   const currentIndex = allHz.indexOf(Number(currentHz));
   const nextHz = nextElementInArray(currentIndex, allHz);
   
-  console.log(nextHz)
+  // console.log(nextHz)
 
   return nextHz;
 };

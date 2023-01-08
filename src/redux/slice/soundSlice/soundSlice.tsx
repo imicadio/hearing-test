@@ -16,8 +16,7 @@ const initialState: SoundSlice = {
 
   calibratedSoundAnswer: [{ true: "Yes" }, { false: "No" }],
 
-  activeHz: "",
-  activeDb: "",
+  pageBackward: false,
 };
 
 const soundSlice = createSlice({
@@ -33,19 +32,19 @@ const soundSlice = createSlice({
       }
     },
 
-    SET_ACTIVE_HZ: (state, action) => {
-      state.activeHz = action.payload;
+    SET_PAGE_BACKWARD: (state, action) => {
+      state.pageBackward = action.payload;
     },
   },
 });
 
-export const { SET_ACTIVE_HZ, SET_HZ } = soundSlice.actions;
+export const { SET_HZ, SET_PAGE_BACKWARD } = soundSlice.actions;
 
 export const selectedAllHz = (state: RootState) => state.sound.allHz;
 export const selectedAllDb = (state: RootState) => state.sound.allDb;
 export const selectedCalibratedSoundAnswer = (state: RootState) =>
   state.sound.calibratedSoundAnswer;
-export const selectedActiveHz = (state: RootState) => state.sound.activeHz;
-export const selectedActiveDb = (state: RootState) => state.sound.activeDb;
+export const selectedPageBackward = (state: RootState) =>
+  state.sound.pageBackward;
 
 export default soundSlice.reducer;

@@ -4,10 +4,10 @@ import { IPlay } from "./model";
 import { PlusCircleIcon, MinusCircleIcon } from "@heroicons/react/24/solid";
 import Button from "../../common/button/button";
 
-const Play: FC<IPlay> = ({ play, changePlay, currentHz }) => {
+const Play: FC<IPlay> = ({ play, changePlay, currentHz, turnUp, turnDown }) => {
   const pauseBtn = currentHz ? (
     <>
-      <Button isSound customClass="px-2 py-2">
+      <Button isSound customClass="px-2 py-2" onClick={turnDown}>
         <MinusCircleIcon className="w-20 h-20" />
       </Button>
       <Button isSound customClass="px-2 py-2" onClick={changePlay}>
@@ -16,7 +16,7 @@ const Play: FC<IPlay> = ({ play, changePlay, currentHz }) => {
           aria-hidden="true"
         />
       </Button>
-      <Button isSound customClass="px-2 py-2">
+      <Button isSound customClass="px-2 py-2" onClick={turnUp}>
         <PlusCircleIcon className="w-20 h-20" />
       </Button>
     </>

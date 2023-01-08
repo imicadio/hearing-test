@@ -4,6 +4,5 @@ export type SoundSlice = {
 
   calibratedSoundAnswer: Record<boolean | string, string>[];
 
-  activeHz: string;
-  activeDb: string;
+  pageBackward: boolean;
 };
