@@ -31,16 +31,23 @@ const Sounds: FC<{}> = () => {
     ? searchParams.get("hz")
     : "calibrated";
 
-  const isCalibrated: string | null = searchParams.get("hz")
-    ? searchParams.get("hz")
-    : null;
+  const isCalibrated: boolean = searchParams.get("hz")
+    ? false
+    : true;
   const isSelected = getValueFromArray(selectAllHz, currentHz);
   const [play, setPlay] = useState<boolean>(false);
+  const [audio, setAudio] = useState<any>();
 
   console.log("current Hz: ", currentHz);
 
   // methods
-  const changePlay = () => setPlay(!play);
+  const changePlay = () => {
+    if (audio) {
+      console.log(audio);
+      audio.play(); 
+    }
+    setPlay(!play);
+  };
 
   const nextPage = () => {
     dispatch(SET_ACTIVE_HZ(nextHz));
@@ -53,7 +60,7 @@ const Sounds: FC<{}> = () => {
   };
 
   const handleOptionChange = (changeEvent: any) => {
-    console.log('test')
+    console.log("test");
     const setKey = changeEvent.target.value;
     dispatch(SET_HZ({ key: currentHz, value: setKey }));
     setTimeout(
@@ -66,9 +73,11 @@ const Sounds: FC<{}> = () => {
     );
   };
 
-  // useEffect(() => {}, [activeHz]);
+  useEffect(() => {
+    setAudio(new Audio(require('../../assets/audio/audio/250Hz/250_80.ogg')));
+  }, []);
 
-  const renderBtn = isCalibrated ? (
+  const renderBtn = !isCalibrated ? (
     <Button
       disable={!play}
       onClick={nextPage}
@@ -82,14 +91,14 @@ const Sounds: FC<{}> = () => {
       listing={calibratedSoundAnswer}
       selected={isSelected}
       handleOptionChange={handleOptionChange}
-      customClass={play ? 'visible col-start-2' : 'invisible'}
+      customClass={play ? "visible col-start-2" : "invisible"}
     />
   );
 
   return (
     <div className="grid grid-cols-3 gap-5 place-items-center w-full p-5">
-      <Play play={play} currentHz={isCalibrated} changePlay={changePlay} />
-      <SoundText currentHz={isCalibrated} play={play} />
+      <Play play={play} currentHz={!isCalibrated} changePlay={changePlay} />
+      <SoundText isCalibrated={!isCalibrated} currentHz={currentHz} play={play} />
       {renderBtn}
     </div>
   );

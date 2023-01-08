@@ -1,4 +1,5 @@
 export type ISoundText = {
-  currentHz: number | string | null | undefined;
+  currentHz: string | null;
   play: boolean;
+  isCalibrated: boolean;
 };
