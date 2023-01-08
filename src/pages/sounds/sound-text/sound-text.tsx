@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { clickToPlayText, adjustToneText } from "../../../shared/text";
+import { clickToPlayText, adjustToneText, doYouHearSound } from "../../../shared/text";
 import { ISoundText } from "./model";
 
 const SoundText: FC<ISoundText> = ({ currentHz, play }) => {
@@ -12,7 +12,7 @@ const SoundText: FC<ISoundText> = ({ currentHz, play }) => {
       ? adjustToneText
       : clickToPlayText
     : play
-    ? null
+    ? doYouHearSound
     : clickToPlayText;
 
   return (

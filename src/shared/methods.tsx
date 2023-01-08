@@ -1,7 +1,15 @@
-export const getKeys = (array: { [key: number]: string }[]) => {
-  return array.map((element) => {
-    return Number(Object.keys(element)[0]);
-  });
+export const getKeys = (array: { [key: number | string]: number | null }[]) => {
+  const numericalKeys: Array<number> = [];
+
+  for (const obj of array) {
+    for (const key in obj) {
+      if (typeof key === "number" && typeof obj[key] === "number") {
+        numericalKeys.push(key);
+      }
+    }
+  }
+
+  return numericalKeys;
 };
 
 export const nextElementInArray = (

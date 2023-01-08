@@ -4,12 +4,13 @@ import { RootState } from "../../store";
 
 const initialState: SoundSlice = {
   allHz: [
-    { 250: "" },
-    { 500: "" },
-    { 1000: "" },
-    { 2000: "" },
-    { 4000: "" },
-    { 8000: "" },
+    { calibrated: null },
+    { 250: null },
+    { 500: null },
+    { 1000: null },
+    { 2000: null },
+    { 4000: null },
+    { 8000: null },
   ],
   allDb: [-5, 0, 5, 10, 15, 20, 30, 40, 50, 60, 70, 80],
 
@@ -22,7 +23,7 @@ const soundSlice = createSlice({
   initialState,
   reducers: {
     SET_ACTIVE_HZ: (state, action) => {
-        state.activeHz = action.payload;
+      state.activeHz = action.payload;
     },
   },
 });

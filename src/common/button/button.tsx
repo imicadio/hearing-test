@@ -14,12 +14,16 @@ const Button: FC<IButton> = ({
   isSound,
   disable = false,
 }) => {
-  const returnClass = classNames(customClass, {
-    [`inline-block bg-lime-500 py-3 px-5 rounded-full text-white shadow-lg shadow-lime-500/50 hover:before:content-['']`]:
-      type === "button" && !isBack,
-    [`mb-4 flex`]: isBack,
-    [`disabled:opacity-75 disabled:bg-gray-500 disabled:shadow-gray-500/50`]: isSound
-  });
+  const returnClass = classNames(
+    {
+      [`inline-block bg-lime-500 py-3 px-5 rounded-full text-white shadow-lg shadow-lime-500/50 hover:before:content-['']`]:
+        type === "button" && !isBack,
+      [`mb-4 flex`]: isBack,
+      [`disabled:opacity-75 disabled:bg-gray-500 disabled:shadow-gray-500/50`]:
+        isSound,
+    },
+    customClass
+  );
 
   if (isBack) {
     return (

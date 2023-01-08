@@ -13,7 +13,6 @@ import {
 import { ROUTER } from "../../shared/router";
 import SoundText from "./sound-text/sound-text";
 
-
 const Sounds: FC<{}> = () => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
@@ -40,23 +39,24 @@ const Sounds: FC<{}> = () => {
       : navigate({ pathname: ROUTER.QUESTION });
   };
 
-  useEffect(() => {}, [activeHz]);
+  // useEffect(() => {}, [activeHz]);
+
+  const renderBtn = currentHz ? (
+    <Button
+      disable={!play}
+      onClick={nextPage}
+      customClass="col-start-1 col-end-4 md:col-start-2 md:col-end-3 w-full"
+      isSound
+    >
+      Next
+    </Button>
+  ) : null;
 
   return (
     <div className="grid grid-cols-3 gap-5 place-items-center w-full p-5">
-      
-      <Play play={play} changePlay={changePlay} />
-      
-
+      <Play play={play} currentHz={currentHz} changePlay={changePlay} />
       <SoundText currentHz={currentHz} play={play} />
-      <Button
-        disable={!play}
-        onClick={nextPage}
-        customClass="col-start-1 col-end-4 md:col-start-2 md:col-end-3 w-full"
-        isSound
-      >
-        Next
-      </Button>
+      {renderBtn}
     </div>
   );
 };
