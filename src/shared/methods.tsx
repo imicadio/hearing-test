@@ -3,8 +3,9 @@ export const getKeys = (array: { [key: number | string]: number | null }[]) => {
 
   for (const obj of array) {
     for (const key in obj) {
-      if (typeof key === "number" && typeof obj[key] === "number") {
-        numericalKeys.push(key);
+      const isNumber = parseInt(key);
+      if (typeof isNumber === "number") {
+        numericalKeys.push(isNumber);
       }
     }
   }
