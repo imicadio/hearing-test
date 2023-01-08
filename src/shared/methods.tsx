@@ -22,3 +22,17 @@ export const nextElementInArray = (
     return null;
   }
 };
+
+export const getValueFromArray = (
+  array: { [key: string | number]: any }[],
+  key: string | number | null
+): any => {
+  if (!key) return;
+
+  for (const obj of array) {
+    if (key in obj) {
+      return obj[key];
+    }
+  }
+  return undefined;
+};

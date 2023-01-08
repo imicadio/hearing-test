@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { PlayCircleIcon, PauseCircleIcon } from "@heroicons/react/24/solid";
 import { IPlay } from "./model";
-import VolumeButton from "../volume-button/volume-button";
 import { PlusCircleIcon, MinusCircleIcon } from "@heroicons/react/24/solid";
 import Button from "../../common/button/button";
 

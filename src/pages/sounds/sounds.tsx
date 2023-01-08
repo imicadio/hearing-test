@@ -4,12 +4,17 @@ import { useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Button from "../../common/button/button";
 import Play from "../../components/play/play";
+import SelectListing from "../../components/select-listing/select-listing";
 import { useNextHz } from "../../hooks/useNextHz";
 import {
   selectedActiveDb,
   selectedActiveHz,
+  selectedAllHz,
+  selectedCalibratedSoundAnswer,
   SET_ACTIVE_HZ,
+  SET_HZ,
 } from "../../redux/slice/soundSlice/soundSlice";
+import { getValueFromArray } from "../../shared/methods";
 import { ROUTER } from "../../shared/router";
 import SoundText from "./sound-text/sound-text";
 
@@ -20,11 +25,19 @@ const Sounds: FC<{}> = () => {
   const navigate = useNavigate();
   const activeHz = useSelector(selectedActiveHz);
   const activeDb = useSelector(selectedActiveDb);
-  const currentHz = searchParams.get("hz");
+  const selectAllHz = useSelector(selectedAllHz);
+  const calibratedSoundAnswer = useSelector(selectedCalibratedSoundAnswer);
+  const currentHz: string | number | null = searchParams.get("hz")
+    ? searchParams.get("hz")
+    : "calibrated";
+
+  const isCalibrated: string | null = searchParams.get("hz")
+    ? searchParams.get("hz")
+    : null;
+  const isSelected = getValueFromArray(selectAllHz, currentHz);
+  const [play, setPlay] = useState<boolean>(false);
 
   console.log("current Hz: ", currentHz);
-
-  const [play, setPlay] = useState<boolean>(false);
 
   // methods
   const changePlay = () => setPlay(!play);
@@ -39,9 +52,23 @@ const Sounds: FC<{}> = () => {
       : navigate({ pathname: ROUTER.QUESTION });
   };
 
+  const handleOptionChange = (changeEvent: any) => {
+    console.log('test')
+    const setKey = changeEvent.target.value;
+    dispatch(SET_HZ({ key: currentHz, value: setKey }));
+    setTimeout(
+      () =>
+        navigate({
+          pathname: ROUTER.CALIBRATED + "/" + nextHz,
+          search: `?hz=${nextHz}`,
+        }),
+      100
+    );
+  };
+
   // useEffect(() => {}, [activeHz]);
 
-  const renderBtn = currentHz ? (
+  const renderBtn = isCalibrated ? (
     <Button
       disable={!play}
       onClick={nextPage}
@@ -50,12 +77,19 @@ const Sounds: FC<{}> = () => {
     >
       Next
     </Button>
-  ) : null;
+  ) : (
+    <SelectListing
+      listing={calibratedSoundAnswer}
+      selected={isSelected}
+      handleOptionChange={handleOptionChange}
+      customClass={play ? 'visible col-start-2' : 'invisible'}
+    />
+  );
 
   return (
     <div className="grid grid-cols-3 gap-5 place-items-center w-full p-5">
-      <Play play={play} currentHz={currentHz} changePlay={changePlay} />
-      <SoundText currentHz={currentHz} play={play} />
+      <Play play={play} currentHz={isCalibrated} changePlay={changePlay} />
+      <SoundText currentHz={isCalibrated} play={play} />
       {renderBtn}
     </div>
   );

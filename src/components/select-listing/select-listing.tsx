@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import classNames from "classnames";
 import { IHeadphones } from "../../redux/slice/headphonesSlice/model";
 import { ISelectedListing } from "./model";
 import SelectList from "./select-list/select-list";
@@ -7,7 +8,10 @@ const SelectListing: FC<ISelectedListing> = ({
   listing,
   selected,
   handleOptionChange,
+  customClass,
 }) => {
+  const returnClass = classNames(customClass, "flex flex-col gap-2 text-lg");
+
   const renderListing = listing.map((element: IHeadphones) => {
     const [key] = Object.keys(element);
     const name = element[key];
@@ -22,7 +26,7 @@ const SelectListing: FC<ISelectedListing> = ({
     );
   });
 
-  return <form className="flex flex-col gap-2 text-lg">{renderListing}</form>;
+  return <form className={returnClass}>{renderListing}</form>;
 };
 
 export default SelectListing;

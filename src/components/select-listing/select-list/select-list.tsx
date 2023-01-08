@@ -16,9 +16,11 @@ const SelectList: FC<ISelectList> = ({
         type="radio"
         value={id}
         checked={isChecked}
-        onChange={handleOptionChange}        
+        onClick={handleOptionChange}
+        onChange={() => {}}
+        className="cursor-pointer"
       />
-      <label htmlFor={id} className="ml-3">
+      <label htmlFor={id} className="ml-3 cursor-pointer">
         {name}
       </label>
     </div>
