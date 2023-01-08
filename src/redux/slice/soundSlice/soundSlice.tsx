@@ -27,7 +27,7 @@ const soundSlice = createSlice({
       const { key, value } = action.payload;
       for (const obj of state.allHz) {
         if (key in obj) {
-          obj.calibrated = value;
+          obj[key] = value;
         }
       }
     },

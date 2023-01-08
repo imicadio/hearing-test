@@ -34,9 +34,6 @@ const Sounds: FC<{}> = () => {
   const isSelected = getValueFromArray(selectAllHz, currentHz);
   const [play, setPlay] = useState<boolean>(false);
   const [audio, setAudio] = useState<any>(null);
-  const [pathSound, setPathSound] = useState<string>(
-    "../../assets/audio/audio/" + currentHz + "Hz/" + currentHz + "_80.ogg"
-  );
   const [indexDb, setIndexDb] = useState<number>(0);
 
   // console.log("current Hz: ", currentHz);
@@ -61,6 +58,7 @@ const Sounds: FC<{}> = () => {
 
   const nextPage = (): void => {
     audioStop();
+    dispatch(SET_HZ({ key: currentHz, value: selectAllDb[indexDb] }));
     nextHz
       ? navigate({
           pathname: ROUTER.CALIBRATED + "/" + nextHz,
